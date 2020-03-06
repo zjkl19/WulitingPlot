@@ -11,6 +11,23 @@ class Wuliting(object):
     def __init__(self):
         self.MarkerList=['o','s','p','x','v','h']    #默认的MarkerList
 
+    def _PlotChart(self,plt,x,yList,xlabelText,ylabelText,title,xticksLabelList,legendList):
+        """
+           绘制图形功能代码
+        """
+
+        plt.figure()  # 使用plt.figure定义一个图像窗口.
+
+        for i in range(0,len(yList)):
+            plt.plot(x, yList[i],marker=self.MarkerList[i])
+
+        plt.legend(legendList)
+        plt.xticks(x, xticksLabelList)    #自定义标签
+        plt.xlabel(xlabelText)
+        plt.ylabel(ylabelText)
+        plt.title(title)  # 设置标题
+        plt.show()
+
     def PlotE1QDCJ(self):
         """
            绘制E匝道第1阶段桥墩沉降
@@ -139,25 +156,17 @@ class Wuliting(object):
         #以下两行防止乱码
         plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文标签
         plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
-
+        title='E匝道第三阶段主梁112#、113#截面竖向位移监测结果'
+        xlabelText='时间'
+        ylabelText='竖向位移（με）'
         legendList=['E-D1','E-D4','E-D2','E-D6']
         xticksLabelList=['0301','0310','0320','0324','0327','0401','0410','0415','0418','0424','0504','0515','0601','0610','0614']
         x = np.array([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
         yList=[
             np.array([5.98,5.89,5.65,5.37,4.98,4.41,4.42,4.02,3.97,3.99,3.54,3.21,3.04,3.07,2.98])
             ,np.array([6.13,6.54,6.14,5.99,5.72,5.68,5.43,5.01,4.92,4.57,4.33,4.07,3.87,3.81,3.72])
-            ,np.array([3.78,3.68,3.99,-2.75,-4.3,-4.33,-4.68,-5.55,4.23,3.56,2.78,0,np.nan,0,0])
-            ,np.array([4.13,4.12,4.02,1.06,-1.54,-3.12,-3.76,-3.98,4.22,3.78,2.99,0,0,0,0])
+            ,np.array([3.78,3.68,3.99,-2.75,-4.3,-4.33,-4.68,-5.55,4.23,3.56,2.78,np.nan,np.nan,np.nan,np.nan])
+            ,np.array([4.13,4.12,4.02,1.06,-1.54,-3.12,-3.76,-3.98,4.22,3.78,2.99,np.nan,np.nan,np.nan,np.nan])
         ]
 
-        plt.figure()  # 使用plt.figure定义一个图像窗口.
-
-        for i in range(0,len(yList)):
-            plt.plot(x, yList[i],marker=self.MarkerList[i])
-
-        plt.legend(legendList)
-        plt.xticks(x, xticksLabelList)    #自定义标签
-        plt.xlabel('时间')
-        plt.ylabel('竖向位移（με）')
-        plt.title('E匝道第三阶段主梁112#、113#截面竖向位移监测结果')  # 设置标题
-        plt.show()
+        self._PlotChart(plt,x,yList,xlabelText,ylabelText,title,xticksLabelList,legendList)
