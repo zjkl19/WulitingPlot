@@ -16,6 +16,8 @@ class Wuliting(object):
            绘制图形功能代码
         """
 
+        plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文标签
+        plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
         plt.figure()  # 使用plt.figure定义一个图像窗口.
 
         for i in range(0,len(yList)):
@@ -25,7 +27,7 @@ class Wuliting(object):
         plt.xticks(x, xticksLabelList)    #自定义标签
         plt.xlabel(xlabelText)
         plt.ylabel(ylabelText)
-        plt.title(title)  # 设置标题
+        #plt.title(title)  # 设置标题
         plt.show()
 
     def PlotE1QDCJ(self):
@@ -58,7 +60,7 @@ class Wuliting(object):
         plt.xticks(x, xticksLabelList)    #自定义标签
         plt.xlabel('时间')
         plt.ylabel('沉降（mm）')
-        plt.title('E匝道第一阶段桥墩沉降数据时程曲线图')  # 设置标题
+        #plt.title('E匝道第一阶段桥墩沉降数据时程曲线图')  # 设置标题
         plt.show()
 
     def PlotE2ZL112(self):
@@ -87,7 +89,7 @@ class Wuliting(object):
         plt.xticks(x, xticksLabelList)    #自定义标签
         plt.xlabel('时间')
         plt.ylabel('竖向位移（mm）')
-        plt.title('E匝道第二阶段主梁112#截面竖向位移监测结果')  # 设置标题
+        #plt.title('E匝道第二阶段主梁112#截面竖向位移监测结果')  # 设置标题
         plt.show()
 
     def PlotE2ZL113(self):
@@ -116,7 +118,7 @@ class Wuliting(object):
         plt.xticks(x, xticksLabelList)    #自定义标签
         plt.xlabel('时间')
         plt.ylabel('竖向位移（mm）')
-        plt.title('E匝道第二阶段主梁113#截面竖向位移监测结果')  # 设置标题
+        #plt.title('E匝道第二阶段主梁113#截面竖向位移监测结果')  # 设置标题
         plt.show()
 
     def PlotE2YB(self):
@@ -146,27 +148,97 @@ class Wuliting(object):
         plt.xticks(x, xticksLabelList)    #自定义标签
         plt.xlabel('时间')
         plt.ylabel('应变值（με）')
-        plt.title('E匝道第二阶段主梁应变监测结果')  # 设置标题
+        #plt.title('E匝道第二阶段主梁应变监测结果')  # 设置标题
         plt.show()
 
-    def PlotE3ZL112(self):
+    def PlotE3ZL(self):
         """
-           绘制E匝道第3阶段主梁112#截面竖向位移
+           绘制E匝道第3阶段主梁112#截面和113#截面竖向位移
         """
-        #以下两行防止乱码
-        plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文标签
-        plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
+
         title='E匝道第三阶段主梁112#、113#截面竖向位移监测结果'
         xlabelText='时间'
-        ylabelText='竖向位移（με）'
+        ylabelText='竖向位移（mm）'
         legendList=['E-D1','E-D4','E-D2','E-D6']
-        xticksLabelList=['0301','0310','0320','0324','0327','0401','0410','0415','0418','0424','0504','0515','0601','0610','0614']
-        x = np.array([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
+        xticksLabelList=['0301','0310','0320','0324','0327','0401','0410','0415','0418','0424','0504','0515','0601','0610','0614']        
         yList=[
             np.array([5.98,5.89,5.65,5.37,4.98,4.41,4.42,4.02,3.97,3.99,3.54,3.21,3.04,3.07,2.98])
             ,np.array([6.13,6.54,6.14,5.99,5.72,5.68,5.43,5.01,4.92,4.57,4.33,4.07,3.87,3.81,3.72])
             ,np.array([3.78,3.68,3.99,-2.75,-4.3,-4.33,-4.68,-5.55,4.23,3.56,2.78,np.nan,np.nan,np.nan,np.nan])
             ,np.array([4.13,4.12,4.02,1.06,-1.54,-3.12,-3.76,-3.98,4.22,3.78,2.99,np.nan,np.nan,np.nan,np.nan])
         ]
+        x = np.linspace(1, len(yList[0]), num=len(yList[0]))
+
+        self._PlotChart(plt,x,yList,xlabelText,ylabelText,title,xticksLabelList,legendList)
+
+    def PlotE4ZLWY112(self):
+        """
+           绘制E匝道第4阶段主梁112#竖向位移
+        """
+
+        title='E匝道112#墩第四阶段主梁竖向位移监测结果'
+        xlabelText='时间'
+        ylabelText='竖向位移（mm）'
+        legendList=['E-D1','E-D4']
+        xticksLabelList=['托换前','千斤顶顶升最大高度时','千斤顶卸荷后','6月16日18:00','6月17日18:00','6月18日18:00']        
+        yList=[
+            np.array([2.98,10.56,3.54,3.87,3.76,3.55])
+            ,np.array([3.72,9.98,2.97,2.97,3.01,3.44])
+        ]
+        x = np.linspace(1, len(yList[0]), num=len(yList[0]))
+
+        self._PlotChart(plt,x,yList,xlabelText,ylabelText,title,xticksLabelList,legendList)
+
+    def PlotE4ZLWY113(self):
+        """
+           绘制E匝道第4阶段主梁113#竖向位移
+        """
+
+        title='E匝道113#墩第四阶段主梁竖向位移监测结果'
+        xlabelText='时间'
+        ylabelText='竖向位移（mm）'
+        legendList=['E-D2','E-D6']
+        xticksLabelList=['托换前','千斤顶顶升最大高度时','千斤顶卸荷后','5月6日18:00','5月7日18:00','5月8日18:00']
+        yList=[
+            np.array([2.78,10.76,3.24,3.37,3.48,3.57])
+            ,np.array([2.99,11.35,3.56,3.35,3.61,3.58])
+        ]
+        x = np.linspace(1, len(yList[0]), num=len(yList[0]))
+
+        self._PlotChart(plt,x,yList,xlabelText,ylabelText,title,xticksLabelList,legendList)
+
+    def PlotE4ZLYB112(self):
+        """
+           绘制E匝道第4阶段主梁112#应变
+        """
+
+        title='E匝道112#墩第四阶段主梁竖向应变监测结果'
+        xlabelText='时间'
+        ylabelText='应变值（με）'
+        legendList=['E-Y1','E-Y2']
+        xticksLabelList=['托换前','千斤顶顶升最大高度时','千斤顶卸荷后','6月16日18:00','6月16日18:00','6月16日18:00']        
+        yList=[
+            np.array([0,-26,-22,-22,-21,-22])
+            ,np.array([0,-18,-20,-22,-17,-20])
+        ]
+        x = np.linspace(1, len(yList[0]), num=len(yList[0]))
+
+        self._PlotChart(plt,x,yList,xlabelText,ylabelText,title,xticksLabelList,legendList)
+
+    def PlotE4ZLYB113(self):
+        """
+           绘制E匝道第4阶段主梁113#应变
+        """
+
+        title='E匝道112#墩第四阶段主梁竖向应变监测结果'
+        xlabelText='时间'
+        ylabelText='应变值（με）'
+        legendList=['E-Y1','E-Y2']
+        xticksLabelList=['托换前','千斤顶顶升最大高度时','千斤顶卸荷后','6月16日18:00','6月16日18:00','6月16日18:00']        
+        yList=[
+            np.array([0,-26,-22,-22,-21,-22])
+            ,np.array([0,-18,-20,-22,-17,-20])
+        ]
+        x = np.linspace(1, len(yList[0]), num=len(yList[0]))
 
         self._PlotChart(plt,x,yList,xlabelText,ylabelText,title,xticksLabelList,legendList)
