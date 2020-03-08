@@ -30,6 +30,137 @@ class Wuliting(object):
         #plt.title(title)  # 设置标题
         plt.show()
 
+    def PlotD1QDCJ(self):
+        """
+           绘制D匝道第1阶段桥墩沉降监测数据
+        """
+
+        title='D匝道桥墩沉降监测结果'
+        xlabelText='时间'
+        ylabelText='沉降（mm）'
+        legendList=['D-QD-140','D-QD-141','D-QD-142','D-QD-143']
+        xticksLabelList=['0729','1107','1114','1116','1118','1122','1128']
+        yList=[
+            np.array([0,0.21,-0.45,-0.44,-0.26,0.19,-0.11])
+            ,np.array([0,0.05,-0.29,-0.25,-0.09,-0.09,-0.58])
+            ,np.array([0,-0.18,-0.15,-0.18,-0.04,0.27,0.02])
+            ,np.array([0,-0.17,-0.33,-0.27,-0.32,0.23,-0.06])]
+        x = np.linspace(1, len(yList[0]), num=len(yList[0]))
+
+        self._PlotChart(plt,x,yList,xlabelText,ylabelText,title,xticksLabelList,legendList)
+
+    def PlotD2ZLWY(self):
+        """
+           绘制D匝道第2阶段主梁竖向位移
+        """
+
+        title='D匝道第二阶段主梁竖向位移监测结果'
+        xlabelText='时间'
+        ylabelText='竖向位移（mm）'
+        legendList=['D-D1','D-D3']
+        xticksLabelList=['托换前','千斤顶顶升最大高度时','千斤顶卸荷后','12月3日18:00','12月4日18:00','12月5日18:00']
+        yList=[
+            np.array([0,6.95,4.99,5.16,5.29,5.33])
+            ,np.array([0,7.95,5.95,5.87,5.98,5.97])
+        ]
+        x = np.linspace(1, len(yList[0]), num=len(yList[0]))
+
+        self._PlotChart(plt,x,yList,xlabelText,ylabelText,title,xticksLabelList,legendList)
+
+    def PlotD2ZLYB(self):
+        """
+           绘制D匝道第二阶段主梁应变监测结果
+        """
+
+        title='D匝道第二阶段主梁应变监测结果'
+        xlabelText='时间'
+        ylabelText='应变值（με）'
+        legendList=['E-Y1','E-Y2']
+        xticksLabelList=['托换前','千斤顶顶升最大高度时','千斤顶卸荷后','12月3日18:00','12月4日18:00','12月5日18:00']        
+        yList=[
+            np.array([0,-24,-22,-18,-15,-16])
+            ,np.array([0,-18,-17,-19,-16,-19])
+        ]
+        x = np.linspace(1, len(yList[0]), num=len(yList[0]))
+
+        self._PlotChart(plt,x,yList,xlabelText,ylabelText,title,xticksLabelList,legendList)
+
+    def PlotD3QDCJ(self):
+        """
+           绘制D匝道第3阶段桥墩沉降监测数据
+        """
+
+        title='D匝道第3阶段桥墩沉降监测结果'
+        xlabelText='时间'
+        ylabelText='沉降（mm）'
+        legendList=['D-QD-140','D-QD-142','D-QD-143']
+        xticksLabelList=['1210','1213','1222','0102','0105','0109','0113','0116','0126','0205','0208','0212','0216','0220','0224','0228','0303','0307','0310','0314','0317','0320','0324','0327','0407','0410']
+        yList=[
+            np.array([0.05,0.12,0.13,0.35,0.45,1.02,0.94,0.87,0.77,1.23,1.06,1.18,1.02,1.00,1.39,1.15,1.01,0.98,0.65,0.78,0.66,0.53,0.43,0.36,0.33,0.22])
+            ,np.array([-0.01,-0.05,0.17,0.35,1.02,1.32,1.21,1.17,1.12,1.21,1.38,1.25,1.04,0.95,1.09,1.21,1.15,1.01,0.53,0.65,0.58,0.66,0.58,0.62,0.37,0.29])
+            ,np.array([-0.11,-0.16,-0.35,-0.35,0.02,0.53,0.44,0.37,0.33,0.45,0.31,0.33,0.37,0.51,0.25,0.33,0.32,0.33,0.30,0.32,0.26,0.28,0.31,0.33,0.35,0.33])]
+        x = np.linspace(1, len(yList[0]), num=len(yList[0]))
+
+        self._PlotChart(plt,x,yList,xlabelText,ylabelText,title,xticksLabelList,legendList)
+
+    def PlotD4ZLWY(self):
+        """
+           绘制D匝道第4阶段主梁竖向位移
+        """
+
+        title='D匝道第四阶段主梁竖向位移监测结果'
+        xlabelText='时间'
+        ylabelText='竖向位移（mm）'
+        legendList=['D-D1','D-D3']
+        xticksLabelList=['托换前','千斤顶顶升最大高度时','千斤顶卸荷后','4月12日18:00','4月13日18:00','4月14日18:00']
+        yList=[
+            np.array([3.44,10.87,6.32,6.34,6.26,6.32])
+            ,np.array([4.12,11.45,6.82,6.79,6.71,6.77])
+        ]
+        x = np.linspace(1, len(yList[0]), num=len(yList[0]))
+
+        self._PlotChart(plt,x,yList,xlabelText,ylabelText,title,xticksLabelList,legendList)
+
+    def PlotD4ZLYB(self):
+        """
+           绘制D匝道第4阶段主梁应变监测结果
+        """
+
+        title='D匝道第四阶段主梁应变监测结果'
+        xlabelText='时间'
+        ylabelText='应变值（με）'
+        legendList=['E-Y1','E-Y2']
+        xticksLabelList=['托换前','千斤顶顶升最大高度时','千斤顶卸荷后','4月12日18:00','4月13日18:00','4月14日18:00']        
+        yList=[
+            np.array([0,-16,-16,-17,-16,-18])
+            ,np.array([0,-21,-18,-19,-20,-16])
+        ]
+        x = np.linspace(1, len(yList[0]), num=len(yList[0]))
+
+        self._PlotChart(plt,x,yList,xlabelText,ylabelText,title,xticksLabelList,legendList)
+
+    def PlotD5QDCJ(self):
+        """
+           绘制D匝道第5阶段桥墩沉降监测数据
+        """
+
+        title='D匝道第五阶段桥墩沉降监测数据'
+        xlabelText='时间'
+        ylabelText='沉降（mm）'
+        legendList=['110#','111#','112#新','113#新','114#','123#']
+        xticksLabelList=['20170510','20170525','20170610','20170625','20170710','20170725','20170810','20170825','20170910','20170925','20171010','20171025','20171110'
+            ,'20171125','20171210','20171225','20180110','20180125','20180210','20180225','20180310','20180325','20180410','20180425','20180510'
+            ,'20180525','20180610','20180625','20180710']
+        yList=[
+            np.array([0.33,0.21,0.27,0.22,0.25,0.16,0.22,0.06,0.09,0.21,0.16,0.11,0.24,0.12,0.05,0.16,0.22,0.09,0.19,0.15,0.16,0.11,0.05,0.09,0.12,-0.02,0.09,0.08,0.15])
+            ,np.array([0.05,0.03,-0.06,-0.04,-0.01,0.05,0.07,0.1,0.06,0.02,0.13,0.15,0.17,0.13,0.06,0.11,0.03,0.1,0.11,0.13,0.06,-0.03,0.1,0.08,0.13,0.11,0.06,0.08,0.05])
+            ,np.array([0.29,0.22,0.23,0.36,0.41,0.33,0.31,0.38,0.29,0.42,0.4,0.38,0.39,0.31,0.23,0.29,0.26,0.31,0.25,0.22,0.36,0.3,0.28,0.29,0.22,0.25,0.25,0.27,0.23])
+            ,np.array([0.39,0.32,0.33,0.27,0.36,0.31,0.29,0.3,0.25,0.21,0.31,0.33,0.25,0.28,0.31,0.33,0.25,0.19,0.12,0.06,0.16,0.12,0.25,0.12,0.21,0.22,0.05,0.07,0.15])     
+        ]
+        x = np.linspace(1, len(yList[0]), num=len(yList[0]))
+
+        self._PlotChart(plt,x,yList,xlabelText,ylabelText,title,xticksLabelList,legendList)
+
     def PlotE1QDCJ(self):
         """
            绘制E匝道第1阶段桥墩沉降

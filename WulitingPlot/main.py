@@ -2,4 +2,4 @@
 from Wuliting import Wuliting
 
 wlt=Wuliting()
-wlt.PlotE5QDCJ()
+wlt.PlotD3QDCJ()
